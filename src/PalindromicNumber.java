@@ -1,16 +1,6 @@
-class PalindromicNumber extends DuckNumbers {
+class PalindromicNumber {
 
-    public PalindromicNumber(long number) {
-        super(number);
-    }
-    protected void isPalindromicNumber() {
-        if(isPali()) {
-            System.out.println("palindromic: true");
-        } else {
-            System.out.println("palindromic: false");
-        }
-    }
-    protected boolean isPali() {
+    protected static boolean isPalindromicNumber(long number) {
         String numberString = Long.toString(number);
         for (int i = 0; i < (numberString.length() / 2) + 1; i++) {
 
@@ -19,5 +9,12 @@ class PalindromicNumber extends DuckNumbers {
             }
         }
         return true;
+    }
+
+    protected static String getPalindromicNumber(long number) {
+        if (isPalindromicNumber(number)) {
+            return "palindromic";
+        }
+        return null;
     }
 }

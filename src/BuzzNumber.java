@@ -1,33 +1,15 @@
-class BuzzNumber extends EvenOddNumber {
+class BuzzNumber {
 
-
-    public BuzzNumber(long number) {
-        super(number);
+    protected static boolean isBuzzNumber(long number) {
+        long lastDigit = number % 10;
+        return lastDigit == 7 || number % 7 == 0;
     }
 
-    protected void isBuzzNumber() {
-        if (isBuzz()) {
-            System.out.println("buzz: true");
-        } else {
-            System.out.println("buzz: false");
+    protected static String getBuzzNumber(long number) {
+        if (isBuzzNumber(number)) {
+            return "buzz";
         }
-    }
-
-    private long getLastDigit() {
-        return number % 10;
-    }
-
-    private boolean isEndsBy7() {
-        return getLastDigit() == 7;
-    }
-
-    private boolean isDividedBy7(){
-        return number % 7 == 0;
-
-    }
-
-    private boolean isBuzz() {
-        return isEndsBy7() || isDividedBy7();
+        return null;
     }
 
 }

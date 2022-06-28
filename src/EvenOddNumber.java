@@ -1,19 +1,18 @@
-class EvenOddNumber  {
-    long number;
+class EvenOddNumber {
 
-    public EvenOddNumber(long number) {
-        this.number = number;
-    }
-    protected void isEvenOddNumber() {
-        if (isEven()){
-            System.out.println("even: true\nodd: false");
-        } else {
-            System.out.println("even: false\nodd: true");
-        }
-
-    }
-
-    private boolean isEven() {
+    protected static boolean isEvenNumber(long number) {
         return number % 2 == 0;
+    }
+
+    protected static boolean isOddNumber(long number) {
+        return !(number % 2 == 0);
+    }
+
+    protected static String getEvenOdd(long number) {
+        if (isEvenNumber(number)) {
+            return "even";
+        } else {
+            return "odd";
+        }
     }
 }
