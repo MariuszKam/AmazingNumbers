@@ -1,4 +1,19 @@
-public class GapfulNumber  {
+public class GapfulNumber implements CanCalculate  {
+
+    @Override
+    public boolean isCompatible(long number) {
+        if (String.valueOf(number).length() < 3) {
+            return false;
+        } else return number % getDivider(number) == 0;
+    }
+
+    @Override
+    public String getCompatibility(long number) {
+        if (isCompatible(number)) {
+            return "gapful";
+        }
+        return null;
+    }
 
     protected static int getDivider(long number) {
         char first = Long.toString(number).charAt(0);
@@ -7,18 +22,4 @@ public class GapfulNumber  {
         return Integer.parseInt(divider);
 
     }
-
-    protected static boolean isGapful(long number) {
-        if (String.valueOf(number).length() < 3) {
-            return false;
-        } else return number % getDivider(number) == 0;
-    }
-
-    protected static String getGapful(long number) {
-        if (isGapful(number)) {
-            return "gapful";
-        }
-        return null;
-    }
-
 }

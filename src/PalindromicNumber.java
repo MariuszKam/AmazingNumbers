@@ -1,6 +1,7 @@
-class PalindromicNumber {
+class PalindromicNumber implements CanCalculate {
 
-    protected static boolean isPalindromicNumber(long number) {
+    @Override
+    public boolean isCompatible(long number) {
         String numberString = Long.toString(number);
         for (int i = 0; i < (numberString.length() / 2) + 1; i++) {
 
@@ -11,8 +12,9 @@ class PalindromicNumber {
         return true;
     }
 
-    protected static String getPalindromicNumber(long number) {
-        if (isPalindromicNumber(number)) {
+    @Override
+    public String getCompatibility(long number) {
+        if (isCompatible(number)) {
             return "palindromic";
         }
         return null;

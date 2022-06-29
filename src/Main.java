@@ -1,16 +1,17 @@
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to Amazing Numbers!\n");
-        Menu.printInstructions();
+        Menu menu = new Menu();
+        menu.printInstructions();
         do {
-            Menu.askRequest();
+            menu.askRequest();
             System.out.println();
-            if (Menu.multiplication > 1) {
-                Menu.printCalculation(Menu.number, Menu.multiplication);
-            } else if (Menu.number != 0) {
-                Menu.printCalculation(Menu.number);
+            if (menu.multiplication > 1) {
+                menu.printCalculation(menu.number, menu.multiplication);
+            } else if (menu.number != 0) {
+                menu.printCalculation(menu.number);
             }
-        } while (!Menu.isExit());
+        } while (!menu.isExit());
         System.out.print("Goodbye!");
 
     }

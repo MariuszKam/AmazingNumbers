@@ -1,15 +1,14 @@
-class DuckNumbers implements CanCalculate {
+public class OddNumber implements CanCalculate {
 
     @Override
     public boolean isCompatible(long number) {
-        String numberString = Long.toString(number).substring(1);
-        return numberString.contains("0");
+        return number % 2 == 1;
     }
 
     @Override
     public String getCompatibility(long number) {
         if (isCompatible(number)) {
-            return "duck";
+            return "odd";
         }
         return null;
     }

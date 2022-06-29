@@ -3,11 +3,19 @@ import java.util.*;
 
 public class Menu {
 
-    static long number = 1;
-    static int multiplication = 1;
+    long number = 1;
+    int multiplication = 1;
+    List<CanCalculate> calculateList = List.of(
+            new EvenNumber(),
+            new OddNumber(),
+            new BuzzNumber(),
+            new DuckNumbers(),
+            new PalindromicNumber(),
+            new GapfulNumber()
+    );
 
 
-    protected static void printInstructions() {
+    protected void printInstructions() {
         System.out.println("Supported requests:\n" +
                 "- enter a natural number to know its properties;\n" +
                 "- enter two natural numbers to obtain the properties of the list:\n" +
@@ -17,7 +25,7 @@ public class Menu {
                 "- enter 0 to exit.\n");
     }
 
-    protected static void askRequest() {
+    protected void askRequest() {
         System.out.println("Enter a request: ");
         String[] command = new Scanner(System.in).nextLine().split(" ");
         if ("".equals(command[0])) {
@@ -40,7 +48,7 @@ public class Menu {
         }
     }
 
-    protected static boolean catchError() {   //checking with void as return, boolean might be needed
+    protected boolean catchError() {
         if (number < 0) {
             System.out.println("The first parameter should be a natural number or zero.");
             return true;
@@ -52,17 +60,14 @@ public class Menu {
         return false;
     }
 
-    protected static void printCalculation (long number) {
-        System.out.println("Properties of " + NumberFormat.getInstance(Locale.US).format(number) +
-                "\nbuzz: " + BuzzNumber.isBuzzNumber(number) +
-                "\nduck: " + DuckNumbers.isDuck(number) +
-                "\npalindromic: " + PalindromicNumber.isPalindromicNumber(number) +
-                "\ngapful: " + GapfulNumber.isGapful(number) +
-                "\neven: " + EvenOddNumber.isEvenNumber(number) +
-                "\nodd: " + EvenOddNumber.isOddNumber(number));
-    }
+    protected void printCalculation (long number) {
+        for (CanCalculate calculate : calculateList) {
+            System.out.println("check: " + calculate.isCompatible(number));
+        }
+
+        }
     //Overload
-    protected static void printCalculation (long number, int multiplication) {
+    protected void printCalculation (long number, int multiplication) {
         ArrayList<ArrayList<String>> numbersList = new ArrayList<>();
         for (int i = 0; i < multiplication; i++) {
             ArrayList<String> numberList = new ArrayList<>();
@@ -89,7 +94,7 @@ public class Menu {
 
     }
 
-    protected static boolean isExit() {
+    protected boolean isExit() {
         return number == 0;
     }
 
