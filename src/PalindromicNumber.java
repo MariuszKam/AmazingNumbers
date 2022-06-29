@@ -15,8 +15,13 @@ class PalindromicNumber implements CanCalculate {
     @Override
     public String getCompatibility(long number) {
         if (isCompatible(number)) {
-            return "palindromic";
+            return getName();
         }
         return null;
+    }
+
+    @Override
+    public String getName() {
+        return "palindromic";
     }
 }

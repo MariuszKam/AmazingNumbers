@@ -10,9 +10,14 @@ public class GapfulNumber implements CanCalculate  {
     @Override
     public String getCompatibility(long number) {
         if (isCompatible(number)) {
-            return "gapful";
+            return getName();
         }
         return null;
+    }
+
+    @Override
+    public String getName() {
+        return "gapful";
     }
 
     protected static int getDivider(long number) {

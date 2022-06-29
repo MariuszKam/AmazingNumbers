@@ -61,37 +61,26 @@ public class Menu {
     }
 
     protected void printCalculation (long number) {
+        System.out.println("Properties of " + NumberFormat.getInstance(Locale.US).format(number));
         for (CanCalculate calculate : calculateList) {
-            System.out.println("check: " + calculate.isCompatible(number));
+            System.out.println(calculate.getName() + ": " + calculate.isCompatible(number));
         }
+        System.out.println();
+    }
 
-        }
     //Overload
     protected void printCalculation (long number, int multiplication) {
-        ArrayList<ArrayList<String>> numbersList = new ArrayList<>();
         for (int i = 0; i < multiplication; i++) {
-            ArrayList<String> numberList = new ArrayList<>();
-            numberList.add(Long.toString(number));
-            numberList.add(BuzzNumber.getBuzzNumber(number));
-            numberList.add(DuckNumbers.getDuck(number));
-            numberList.add(PalindromicNumber.getPalindromicNumber(number));   //Practicing Nested ArrayList
-            numberList.add(GapfulNumber.getGapful(number));
-            numberList.add(EvenOddNumber.getEvenOdd(number));
-            numberList.removeIf(Objects::isNull);
-            numbersList.add(numberList);
-            System.out.print(numbersList.get(i).get(0) + " is ");
-            for (int j = 1; j < numbersList.get(i).size(); j++) {
-                if (!(j == numbersList.get(i).size() - 1)) {
-                    System.out.print(numbersList.get(i).get(j) + ", ");
-                } else {
-                    System.out.print(numbersList.get(i).get(j));
+            System.out.print(number + " is ");
+            for (CanCalculate calculate : calculateList) {
+                if (calculate.getCompatibility(number) != null) {
+                    System.out.print(calculate.getCompatibility(number) + ", ");
                 }
-
             }
-            System.out.println();
+            System.out.print("\b\b\n"); //remover of last blank space and comma + starting new line.
             number++;
         }
-
+        System.out.println();
     }
 
     protected boolean isExit() {

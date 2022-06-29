@@ -8,8 +8,13 @@ public class OddNumber implements CanCalculate {
     @Override
     public String getCompatibility(long number) {
         if (isCompatible(number)) {
-            return "odd";
+            return getName();
         }
         return null;
+    }
+
+    @Override
+    public String getName() {
+        return "odd";
     }
 }
