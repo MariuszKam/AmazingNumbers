@@ -11,7 +11,8 @@ public class Menu {
             new BuzzNumber(),
             new DuckNumbers(),
             new PalindromicNumber(),
-            new GapfulNumber()
+            new GapfulNumber(),
+            new SpyNumber()
     );
 
 
