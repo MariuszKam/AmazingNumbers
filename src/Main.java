@@ -4,13 +4,8 @@ public class Main {
         Menu menu = new Menu();
         menu.printInstructions();
         do {
-            menu.askRequest();
+            menu.convertRequest();
             System.out.println();
-            if (menu.multiplication > 1) {
-                menu.printCalculation(menu.number, menu.multiplication);
-            } else if (menu.number != 0) {
-                menu.printCalculation(menu.number);
-            }
         } while (!menu.isExit());
         System.out.print("Goodbye!");
 
