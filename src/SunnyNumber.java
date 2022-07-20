@@ -1,9 +1,8 @@
-class DuckNumbers implements CanCalculate {
+public class SunnyNumber implements CanCalculate{
 
     @Override
     public boolean isCompatible(long number) {
-        String numberString = Long.toString(number).substring(1);
-        return numberString.contains("0");
+        return Math.sqrt(number + 1) % 1 == 0;
     }
 
     @Override
@@ -16,6 +15,6 @@ class DuckNumbers implements CanCalculate {
 
     @Override
     public String getName() {
-        return "duck";
+        return "sunny";
     }
 }
